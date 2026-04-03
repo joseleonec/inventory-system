@@ -27,7 +27,6 @@ public class ProductController {
         var dto = productMapper.toDTO(product);
 
         return ResponseEntity.ok(dto);
-        
     }
 
 }

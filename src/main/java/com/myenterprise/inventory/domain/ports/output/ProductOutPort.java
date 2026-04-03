@@ -10,7 +10,7 @@ public interface ProductOutPort {
 
     Product update(Product p);
 
-    Product delete(Long id);
+    void delete(Long id);
 
     Product findById(Long id);
 
