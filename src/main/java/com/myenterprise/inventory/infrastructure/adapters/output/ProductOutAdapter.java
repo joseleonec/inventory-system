@@ -46,7 +46,6 @@ public class ProductOutAdapter implements ProductOutPort {
         var entity = productRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Product not found"));
 
         productRepository.delete(entity);
-
     }
 
     @Override
