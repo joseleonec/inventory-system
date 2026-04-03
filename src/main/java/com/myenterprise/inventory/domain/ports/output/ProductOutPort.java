@@ -1,10 +1,10 @@
-package com.myenterprise.inventory.domain.ports.input;
+package com.myenterprise.inventory.domain.ports.output;
 
 import java.util.List;
 
 import com.myenterprise.inventory.domain.models.Product;
 
-public interface ProductInPort {
+public interface ProductOutPort {
 
     Product create(Product p);
 
