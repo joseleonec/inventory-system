@@ -1,5 +1,7 @@
 package com.myenterprise.inventory.infrastructure.adapters.output.persistence.entities;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,6 @@ public class ProductEntity extends AuditEntity {
 
     private String description;
 
-    private Integer quantity;
+    private BigDecimal price;
 
 }

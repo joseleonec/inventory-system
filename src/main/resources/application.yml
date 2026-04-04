@@ -6,6 +6,10 @@ spring:
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     password: ${SPRING_DATASOURCE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   security:
     user:
       name: ${SPRING_SECURITY_USER_NAME:admin}
@@ -16,8 +20,6 @@ logging:
   level:
     root: INFO
     com.example.inventoryservice: DEBUG
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
 management:
   endpoints:
     web:

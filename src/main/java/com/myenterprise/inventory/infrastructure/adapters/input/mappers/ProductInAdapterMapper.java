@@ -1,12 +1,13 @@
 package com.myenterprise.inventory.infrastructure.adapters.input.mappers;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 
 import com.myenterprise.inventory.domain.dto.product.ProductCreateDTO;
 import com.myenterprise.inventory.domain.dto.product.ProductDTO;
 import com.myenterprise.inventory.domain.models.Product;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductInAdapterMapper {
 
     Product toDomain(ProductCreateDTO productCreateDTO);
