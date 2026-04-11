@@ -40,4 +40,10 @@ public class ProductTransactionUseCase implements ProductTransactionInPort {
         return productTransactionOutPort.findAll();
     }
 
+    @Override
+    public List<ProductTransaction> findByProductId(Long productId) {
+
+        return productTransactionOutPort.findByProductId(productId);
+    }
+
 }

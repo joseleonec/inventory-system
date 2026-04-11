@@ -14,4 +14,6 @@ public interface ProductTransactionInPort {
 
     List<ProductTransaction> findAll();
 
+    List<ProductTransaction> findByProductId(Long productId);
+
 }

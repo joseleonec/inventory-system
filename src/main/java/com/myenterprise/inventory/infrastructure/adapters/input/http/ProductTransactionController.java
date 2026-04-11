@@ -58,6 +58,18 @@ public class ProductTransactionController {
         return ResponseEntity.ok(dto);
     }
 
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<List<TransactionDTO>> getTransactionsByProduct(@PathVariable Long productId) {
+
+        var transactions = productTransactionInPort.findByProductId(productId);
+
+        var dtos = transactions.stream()
+                .map(transactionMapper::toDTO)
+                .toList();
+
+        return ResponseEntity.ok(dtos);
+    }
+
     @GetMapping
     public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
 

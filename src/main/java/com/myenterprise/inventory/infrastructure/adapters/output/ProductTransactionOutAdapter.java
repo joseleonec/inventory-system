@@ -57,4 +57,12 @@ public class ProductTransactionOutAdapter implements ProductTransactionOutPort {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<ProductTransaction> findByProductId(Long productId) {
+
+        return productTransactionRepository.findByProductId(productId).stream()
+                .map(transactionOutAdapterMapper::toDomain)
+                .collect(Collectors.toList());
+    }
+
 }
