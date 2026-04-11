@@ -10,7 +10,10 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.myenterprise.inventory.application.exceptions.ProductNotFoundException;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestControllerAdvice
+@Slf4j
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
@@ -60,7 +63,7 @@ public class GlobalExceptionHandler {
                 .error(ex.getClass().getSimpleName())
                 .path(request.getDescription(false).replace("uri=", ""))
                 .build();
-
+        log.error("Unexpected error: ", ex);
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
