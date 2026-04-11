@@ -7,10 +7,14 @@ import org.mapstruct.ReportingPolicy;
 import com.myenterprise.inventory.domain.models.ProductTransaction;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.entities.ProductTransactionEntity;
 
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(
+        componentModel = "spring",
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        uses = ProductOutAdapterMapper.class
+)
 public interface TransactionOutAdapterMapper {
 
-    @Mapping(target = "product.id", source = "transaction.product.id")
+    @Mapping(target = "product", source = "transaction.product")
     ProductTransactionEntity toEntity(ProductTransaction transaction);
 
     ProductTransaction toDomain(ProductTransactionEntity transactionEntity);

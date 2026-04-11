@@ -11,9 +11,11 @@ import com.myenterprise.inventory.domain.models.ProductTransaction;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface TransactionInAdapterMapper {
 
+    @Mapping(target = "productId", source = "product.id")
     TransactionDTO toDTO(ProductTransaction transaction);
 
-    @Mapping(target = "product.id", source = "transaction.productId")
+    @Mapping(target = "product.id", source = "productId")
+    @Mapping(target = "transactionType", source = "type")
     ProductTransaction toDomain(TransactionCreateDTO transaction);
 
 }

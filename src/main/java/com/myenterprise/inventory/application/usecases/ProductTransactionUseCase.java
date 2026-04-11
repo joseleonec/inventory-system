@@ -1,0 +1,43 @@
+package com.myenterprise.inventory.application.usecases;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.myenterprise.inventory.domain.models.ProductTransaction;
+import com.myenterprise.inventory.domain.ports.input.ProductTransactionInPort;
+import com.myenterprise.inventory.domain.ports.output.ProductTransactionOutPort;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ProductTransactionUseCase implements ProductTransactionInPort {
+
+    private final ProductTransactionOutPort productTransactionOutPort;
+
+    @Override
+    public ProductTransaction create(ProductTransaction transaction) {
+
+        return productTransactionOutPort.create(transaction);
+    }
+
+    @Override
+    public void delete(Long id) {
+
+        productTransactionOutPort.delete(id);
+    }
+
+    @Override
+    public ProductTransaction findById(Long id) {
+
+        return productTransactionOutPort.findById(id);
+    }
+
+    @Override
+    public List<ProductTransaction> findAll() {
+
+        return productTransactionOutPort.findAll();
+    }
+
+}
