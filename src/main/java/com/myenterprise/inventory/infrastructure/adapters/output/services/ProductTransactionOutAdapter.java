@@ -1,4 +1,4 @@
-package com.myenterprise.inventory.infrastructure.adapters.output;
+package com.myenterprise.inventory.infrastructure.adapters.output.services;
 
 import java.util.List;
 import java.util.NoSuchElementException;
