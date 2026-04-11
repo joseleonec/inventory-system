@@ -5,10 +5,12 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myenterprise.inventory.application.exceptions.ProductNotFoundException;
 import com.myenterprise.inventory.domain.models.ProductTransaction;
 import com.myenterprise.inventory.domain.ports.output.ProductTransactionOutPort;
+import com.myenterprise.inventory.domain.ports.output.StockOutPort;
 import com.myenterprise.inventory.infrastructure.adapters.output.mappers.TransactionOutAdapterMapper;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.ProductRepository;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.ProductTransactionRepository;
@@ -25,7 +27,10 @@ public class ProductTransactionOutAdapter implements ProductTransactionOutPort {
 
     private final ProductRepository productRepository;
 
+    private final StockOutPort stockOutPort;
+
     @Override
+    @Transactional
     public ProductTransaction create(ProductTransaction transaction) {
 
         var productId = transaction.getProduct().getId();
@@ -33,11 +38,12 @@ public class ProductTransactionOutAdapter implements ProductTransactionOutPort {
         productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException(productId));
 
-        var entity = transactionOutAdapterMapper.toEntity(transaction);
+        var ttransactionEntity = transactionOutAdapterMapper.toEntity(transaction);
 
-        var savedEntity = productTransactionRepository.save(entity);
+        var savedTransactionEntity = productTransactionRepository.save(ttransactionEntity);
 
-        var trxDomain = transactionOutAdapterMapper.toDomain(savedEntity);
+        var trxDomain = transactionOutAdapterMapper.toDomain(savedTransactionEntity);
+        stockOutPort.update(productId, savedTransactionEntity.getId());
 
         return trxDomain;
     }

@@ -3,12 +3,15 @@ package com.myenterprise.inventory.infrastructure.adapters.output.services;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.myenterprise.inventory.application.exceptions.ProductNotFoundException;
 import com.myenterprise.inventory.domain.models.Product;
 import com.myenterprise.inventory.domain.ports.output.ProductOutPort;
+import com.myenterprise.inventory.domain.ports.output.StockOutPort;
 import com.myenterprise.inventory.infrastructure.adapters.output.mappers.ProductOutAdapterMapper;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.ProductRepository;
+import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.StockRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,12 +23,17 @@ public class ProductOutAdapter implements ProductOutPort {
 
     private final ProductOutAdapterMapper productOutAdapterMapper;
 
+    private final StockOutPort stockRepository;
+
     @Override
+    @Transactional
     public Product create(Product p) {
 
         var entity = productOutAdapterMapper.toEntity(p);
 
         var savedEntity = productRepository.save(entity);
+
+        stockRepository.recalculateStock(savedEntity.getId());
 
         return productOutAdapterMapper.toDomain(savedEntity);
     }
