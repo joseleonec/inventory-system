@@ -1,10 +1,10 @@
 package com.myenterprise.inventory.infrastructure.adapters.output;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.stereotype.Service;
 
+import com.myenterprise.inventory.application.exceptions.ProductNotFoundException;
 import com.myenterprise.inventory.domain.models.Product;
 import com.myenterprise.inventory.domain.ports.output.ProductOutPort;
 import com.myenterprise.inventory.infrastructure.adapters.output.mappers.ProductOutAdapterMapper;
@@ -43,7 +43,7 @@ public class ProductOutAdapter implements ProductOutPort {
     @Override
     public void delete(Long id) {
 
-        var entity = productRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Product not found"));
+        var entity = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
 
         productRepository.delete(entity);
     }
@@ -51,7 +51,7 @@ public class ProductOutAdapter implements ProductOutPort {
     @Override
     public Product findById(Long id) {
 
-        var entity = productRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Product not found"));
+        var entity = productRepository.findById(id).orElseThrow(() -> new ProductNotFoundException(id));
 
         return productOutAdapterMapper.toDomain(entity);
     }
