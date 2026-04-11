@@ -2,6 +2,8 @@ package com.myenterprise.inventory.infrastructure.adapters.output.persistence.en
 
 import java.math.BigDecimal;
 
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,6 +16,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "products")
+@SQLRestriction("is_active = true")
 public class ProductEntity extends AuditEntity {
 
     @Id

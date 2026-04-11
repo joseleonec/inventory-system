@@ -1,5 +1,7 @@
 package com.myenterprise.inventory.infrastructure.adapters.output.persistence.entities;
 
+import org.hibernate.annotations.SQLRestriction;
+
 import com.myenterprise.inventory.domain.enums.ProductTransactionType;
 
 import jakarta.persistence.Column;
@@ -19,6 +21,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "product_item_transactions")
+@SQLRestriction("is_active = true")
 public class ProductTransactionEntity extends AuditEntity {
 
     @Id

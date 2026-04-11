@@ -17,4 +17,6 @@ public class ProductTransaction {
 
     private int quantity;
 
+    private Boolean isActive = true;
+
 }

@@ -46,7 +46,9 @@ public class ProductTransactionOutAdapter implements ProductTransactionOutPort {
         var entity = productTransactionRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Transaction not found"));
 
-        productTransactionRepository.delete(entity);
+        entity.setIsActive(false);
+
+        productTransactionRepository.save(entity);
     }
 
     @Override
