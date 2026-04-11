@@ -37,18 +37,9 @@ public class ProductTransactionOutAdapter implements ProductTransactionOutPort {
 
         var savedEntity = productTransactionRepository.save(entity);
 
-        return transactionOutAdapterMapper.toDomain(savedEntity);
-    }
+        var trxDomain = transactionOutAdapterMapper.toDomain(savedEntity);
 
-    @Override
-    public void delete(Long id) {
-
-        var entity = productTransactionRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Transaction not found"));
-
-        entity.setIsActive(false);
-
-        productTransactionRepository.save(entity);
+        return trxDomain;
     }
 
     @Override

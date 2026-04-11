@@ -23,12 +23,6 @@ public class ProductTransactionUseCase implements ProductTransactionInPort {
     }
 
     @Override
-    public void delete(Long id) {
-
-        productTransactionOutPort.delete(id);
-    }
-
-    @Override
     public ProductTransaction findById(Long id) {
 
         return productTransactionOutPort.findById(id);

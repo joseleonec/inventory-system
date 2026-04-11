@@ -8,8 +8,6 @@ public interface ProductTransactionOutPort {
 
     ProductTransaction create(ProductTransaction transaction);
 
-    void delete(Long id);
-
     ProductTransaction findById(Long id);
 
     List<ProductTransaction> findAll();
