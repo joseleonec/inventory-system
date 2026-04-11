@@ -11,7 +11,6 @@ import com.myenterprise.inventory.domain.enums.ProductTransactionType;
 import com.myenterprise.inventory.domain.models.Stock;
 import com.myenterprise.inventory.domain.ports.output.StockOutPort;
 import com.myenterprise.inventory.infrastructure.adapters.output.mappers.StockOutAdapterMapper;
-import com.myenterprise.inventory.infrastructure.adapters.output.mappers.TransactionOutAdapterMapper;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.entities.StockEntity;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.ProductRepository;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.ProductTransactionRepository;
@@ -26,8 +25,6 @@ public class StockOutAdapter implements StockOutPort {
     private final ProductRepository productRepository;
 
     private final ProductTransactionRepository productTransactionRepository;
-
-    private final TransactionOutAdapterMapper transactionOutAdapterMapper;
 
     private final StockRepository stockRepository;
 

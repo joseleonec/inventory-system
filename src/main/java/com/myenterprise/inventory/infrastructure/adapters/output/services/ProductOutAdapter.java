@@ -11,7 +11,6 @@ import com.myenterprise.inventory.domain.ports.output.ProductOutPort;
 import com.myenterprise.inventory.domain.ports.output.StockOutPort;
 import com.myenterprise.inventory.infrastructure.adapters.output.mappers.ProductOutAdapterMapper;
 import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.ProductRepository;
-import com.myenterprise.inventory.infrastructure.adapters.output.persistence.repository.StockRepository;
 
 import lombok.RequiredArgsConstructor;
 
