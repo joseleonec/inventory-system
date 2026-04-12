@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleProductNotFoundException(ProductNotFoundException ex, WebRequest request) {
-        ErrorResponse errorResponse = ErrorResponse.builder()
+        var errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.NOT_FOUND.value())
                 .message(ex.getMessage())
                 .error("Not Found")
@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<ErrorResponse> handleNoSuchElementException(NoSuchElementException ex, WebRequest request) {
 
-        ErrorResponse errorResponse = ErrorResponse.builder()
+        var errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.NOT_FOUND.value())
                 .message(ex.getMessage())
                 .error("Not Found")
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
 
-        ErrorResponse errorResponse = ErrorResponse.builder()
+        var errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.BAD_REQUEST.value())
                 .message(ex.getMessage())
                 .error("Bad Request")
@@ -58,7 +58,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex, WebRequest request) {
 
-        ErrorResponse errorResponse = ErrorResponse.builder()
+        var errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .message("An unexpected error occurred")
                 .error(ex.getClass().getSimpleName())
@@ -70,7 +70,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponse> handleConflict(DataIntegrityViolationException ex, WebRequest request) {
-        ErrorResponse errorResponse = ErrorResponse.builder()
+        var errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.CONFLICT.value())
                 .message("Database conflict: " + ex.getMostSpecificCause().getMessage())
                 .error("Conflict")
