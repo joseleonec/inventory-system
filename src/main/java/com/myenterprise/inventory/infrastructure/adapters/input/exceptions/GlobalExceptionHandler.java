@@ -70,12 +70,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorResponse> handleConflict(DataIntegrityViolationException ex, WebRequest request) {
+
         var errorResponse = ErrorResponse.builder()
                 .status(HttpStatus.CONFLICT.value())
                 .message("Database conflict: " + ex.getMostSpecificCause().getMessage())
                 .error("Conflict")
                 .path(request.getDescription(false).replace("uri=", ""))
                 .build();
+
         return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
     }
 }
