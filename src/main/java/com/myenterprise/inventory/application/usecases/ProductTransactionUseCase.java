@@ -2,15 +2,12 @@ package com.myenterprise.inventory.application.usecases;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.myenterprise.inventory.domain.models.ProductTransaction;
 import com.myenterprise.inventory.domain.ports.input.ProductTransactionInPort;
 import com.myenterprise.inventory.domain.ports.output.ProductTransactionOutPort;
 
 import lombok.RequiredArgsConstructor;
 
-@Service
 @RequiredArgsConstructor
 public class ProductTransactionUseCase implements ProductTransactionInPort {
 
