@@ -15,4 +15,6 @@ public class Product {
 
     private BigDecimal price;
 
+    private String measureUnit;
+
 }

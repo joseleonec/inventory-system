@@ -29,4 +29,6 @@ public class ProductEntity extends AuditEntity {
 
     private BigDecimal price;
 
+    private String measureUnit;
+
 }
