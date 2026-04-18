@@ -1,4 +1,4 @@
-package com.myenterprise.inventory.infrastructure.adapters.input.exceptions;
+package com.myenterprise.inventory.infrastructure.adapters.input.dto;
 
 import java.time.LocalDateTime;
 

@@ -1,4 +1,4 @@
-package com.myenterprise.inventory.infrastructure.adapters.input.exceptions;
+package com.myenterprise.inventory.infrastructure.middleware;
 
 import java.util.NoSuchElementException;
 
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
 import com.myenterprise.inventory.application.exceptions.ProductNotFoundException;
+import com.myenterprise.inventory.infrastructure.adapters.input.dto.ErrorResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
