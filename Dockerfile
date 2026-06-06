@@ -8,7 +8,7 @@ COPY pom.xml .
 COPY .mvn .mvn
 COPY mvnw .
 # Descargar dependencias (offline) para acelerar construcciones posteriores
-RUN ./mvnw dependency:go-offline
+RUN chmod +x mvnw && ./mvnw dependency:go-offline
 
 # Copiar el código fuente y construir el JAR
 COPY src src
