@@ -1,6 +1,17 @@
 spring:
   application:
     name: inventory-service
+  cloud:
+    azure:
+      active-directory:
+        enabled: true
+        profile:
+          tenant-id: "${AZURE_TENANT_ID}"
+        credential:
+          client-id: "${WEB_API_BACKEND_CLIENT_ID}"
+          client-secret: "${WEB_API_BACKEND_CLIENT_SECRET}"
+        app-id-uri: "${WEB_API_BACKEND_APP_ID_URI}"
+
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/inventorydb}
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
