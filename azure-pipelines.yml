@@ -16,7 +16,7 @@ variables:
   tag: "$(Build.BuildId)"
 
   vmImageName: "ubuntu-latest"
-  azureSubscriptionConnection: "Azure subscription 1"
+  azureSubscriptionConnection: "b6b20b4a-de80-4556-b7a6-498c15dba165"
   environmentName: "Production"
 
 stages:
@@ -54,6 +54,7 @@ stages:
                 - task: AzureContainerApps@1
                   displayName: Deploy to Azure Container Apps
                   inputs:
+                    connectedServiceNameARM: "b6b20b4a-de80-4556-b7a6-498c15dba165"
                     containerAppName: "intentory-app"
                     resourceGroup: "test-resource-group"
                     imageToDeploy: $(containerRegistry)/$(imageRepository):$(tag)
