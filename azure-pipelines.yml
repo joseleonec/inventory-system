@@ -16,7 +16,7 @@ variables:
   tag: "$(Build.BuildId)"
 
   vmImageName: "ubuntu-latest"
-  azureSubscriptionConnection: "MyAzureSubscriptionConnection"
+  azureSubscriptionConnection: "Azure subscription 1"
   environmentName: "Production"
 
 stages:
@@ -54,7 +54,6 @@ stages:
                 - task: AzureContainerApps@1
                   displayName: Deploy to Azure Container Apps
                   inputs:
-                    azureSubscription: $(azureSubscriptionConnection)
                     containerAppName: "intentory-app"
                     resourceGroup: "test-resource-group"
                     imageToDeploy: $(containerRegistry)/$(imageRepository):$(tag) # <-- uses BuildId tag
