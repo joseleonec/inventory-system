@@ -37,7 +37,7 @@ stages:
               containerRegistry: $(dockerRegistryServiceConnection)
               tags: |
                 $(tag)
-                latest   # still pushed for convenience, but not used in deploy
+                latest
 
   - stage: Deploy
     displayName: Deploy to Azure
@@ -56,4 +56,4 @@ stages:
                   inputs:
                     containerAppName: "intentory-app"
                     resourceGroup: "test-resource-group"
-                    imageToDeploy: $(containerRegistry)/$(imageRepository):$(tag) # <-- uses BuildId tag
+                    imageToDeploy: $(containerRegistry)/$(imageRepository):$(tag)
